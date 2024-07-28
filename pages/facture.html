@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facture</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/facture.css">
+</head>
+<body>
+  <header class="no-print">
+    <h1 class="no-print">Facture</h1>
+    <nav class="no-print" class="marge">
+      <ul>
+        <li><a href='/'>Accueil</a></li>
+       
+        <li><a href='/pages/stock'>Stock</a></li>
+        <li><a href='/pages/achat'>Achats</a></li>
+        <li><a href='/pages/ventes'>Ventes</a></li>
+        <li><a href='/pages/clients'>Clients</a></li>
+        
+        <li><a href='/pages/payments'>Paiements</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2 class="no-print">Facture</h2>
+    <div id="factureContent">
+      <!-- Facture details will be dynamically generated here -->
+    </div>
+    <div class="no-prin">
+      <button id="printButton">Imprimer</button>
+      <button id="cancelButton">Annuler</button>
+    </div>
+  </main>
+  <script src="../js/facture.js"></script>
+</body>
+</html>

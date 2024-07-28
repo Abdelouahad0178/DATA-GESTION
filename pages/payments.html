@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des Paiements</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/payments.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #343a40;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      position: relative;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    nav ul li:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    form label {
+      margin-top: 10px;
+    }
+
+    form input, form button, form select {
+      margin-top: 5px;
+      padding: 10px;
+      font-size: 1em;
+    }
+
+    form button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    form button:hover {
+      background-color: #218838;
+    }
+
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    .styled-table thead tr {
+      background-color: #343a40;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 2px solid #343a40;
+    }
+
+    .styled-table tfoot tr {
+      background-color: #f9f9f9;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1em;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin-bottom: 10px;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gestion des Paiements</h1>
+    <nav>
+      <ul>
+        <li><a href='../index.html'>Accueil</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Paiements</a>
+          <div class="dropdown-content">
+            <a href="#" id="showFormButton">Ajouter Paiement</a>
+            <a href="#" id="editMenuButton">Modifier</a>
+            <a href="#" id="deleteMenuButton">Supprimer</a>
+            <a href="#" id="printMenuButton">Imprimer</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div id="formSection" class="hidden">
+      <form id="paymentForm">
+        <label for="client">Sélectionnez le client:</label>
+        <select id="client" name="client" required>
+          <option value="" disabled selected>Choisir un client</option>
+        </select>
+        <label for="invoice">Sélectionnez N° Facture:</label>
+        <select id="invoice" name="invoice" required>
+          <option value="" disabled selected>Choisir un N° Facture</option>
+        </select>
+        <label for="paidAmount">Montant payé:</label>
+        <input type="number" id="paidAmount" name="paidAmount" required>
+        <button type="submit" id="addPaymentButton">Ajouter</button>
+      </form>
+    </div>
+    <div id="editSection" class="hidden">
+      <label for="editClientSelect">Sélectionner un client:</label>
+      <select id="editClientSelect"></select>
+      <label for="editInvoiceSelect">Sélectionner un N° Facture:</label>
+      <select id="editInvoiceSelect"></select>
+      <button id="editPaymentButton">Modifier</button>
+    </div>
+    <div id="deleteSection" class="hidden">
+      <label for="deleteClientSelect">Sélectionner un client:</label>
+      <select id="deleteClientSelect"></select>
+      <label for="deleteInvoiceSelect">Sélectionner un N° Facture:</label>
+      <select id="deleteInvoiceSelect"></select>
+      <button id="deletePaymentButton">Supprimer</button>
+    </div>
+    <div id="searchSection">
+      <label for="searchClientInput">Rechercher un client:</label>
+      <input type="text" id="searchClientInput" placeholder="Rechercher un client...">
+    </div>
+    <h3>Liste des Paiements</h3>
+    <table id="paymentTable" class="styled-table">
+      <thead>
+        <tr>
+          <th>Client (nom)</th>
+          <th>N° Facture</th>
+          <th>Total</th>
+          <th>Montant payé</th>
+          <th>Solde à payer</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4"></td>
+          <td id="totalBalance">Total à payer: 0.00</td>
+        </tr>
+      </tfoot>
+    </table>
+    <button id="printButton">Imprimer</button>
+  </main>
+  <script src="../js/payments.js"></script>
+</body>
+</html>

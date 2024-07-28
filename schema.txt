@@ -1,0 +1,21 @@
+/data gestion
+  /css
+    styles.css
+    achat.css
+    ventes.css
+    stock.js
+    payments.css
+  /js
+    script.js
+    achat.js
+    stock.js
+    ventes.js
+    payments.js
+  /pages
+    
+    stock.html
+    ventes.html
+    achat.html
+    clients.html
+    payments.html
+  index.html

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des Achats</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/achat.css">
+</head>
+<body>
+  <header>
+    <h1>Gestion des Achats</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Achats</a>
+          <div class="dropdown-content">
+            <a href="#" id="showFormButton">Ajouter</a>
+            <a href="#" id="searchMenuButton">Recherche</a>
+            <a href="#" id="filterMenuButton">Filtrer</a>
+            <a href="#" id="printMenuButton">Imprimer</a>
+            <a href="#" id="editMenuButton">Modifier</a>
+            <a href="#" id="deleteMenuButton">Supprimer</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div id="formSection" class="hidden">
+      <form id="achatForm">
+        <label for="ref">Référence:</label>
+        <input type="text" id="ref" name="ref" required>
+        <label for="item">Nom de l'article:</label>
+        <input type="text" id="item" name="item" required>
+        <label for="supplier">Fournisseur:</label>
+        <input type="text" id="supplier" name="supplier" required>
+        <label for="quantity">Quantité:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        <label for="price">Prix:</label>
+        <input type="number" id="price" name="price" required>
+        <label for="date">Date d'achat:</label>
+        <input type="date" id="date" name="date" required>
+        <button type="submit" id="submitButton">Ajouter</button>
+      </form>
+    </div>
+    <div id="searchSection" class="hidden">
+      <label for="search">Rechercher:</label>
+      <select id="searchType">
+        <option value="item">Nom de l'article</option>
+        <option value="supplier">Fournisseur</option>
+      </select>
+      <input type="text" id="search" placeholder="Rechercher...">
+    </div>
+    <div id="filterSection" class="hidden">
+      <button id="filterButton">Filtrer</button>
+      <label for="startDate">Date de début:</label>
+      <input type="date" id="startDate">
+      <label for="endDate">Date de fin:</label>
+      <input type="date" id="endDate">
+    </div>
+    <div id="editSection" class="hidden">
+      <label for="editSelect">Sélectionner un article à modifier:</label>
+      <select id="editSelect"></select>
+    </div>
+    <div id="deleteSection" class="hidden">
+      <label for="deleteSelect">Sélectionner un article à supprimer:</label>
+      <select id="deleteSelect"></select>
+    </div>
+    <h3 class="no-print">Liste des Achats</h3>
+    <div id="searchResult"></div>
+    <table id="achatTable" class="styled-table">
+      <thead>
+        <tr>
+          <th>Référence</th>
+          <th>Article</th>
+          <th>Fournisseur</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th class="actionsColumn no-print" id="no-print1">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </main>
+  <script src="../js/achat.js"></script>
+</body>
+</html>

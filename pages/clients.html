@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des Clients</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/clients.css">
+</head>
+<body>
+  <header>
+    <h1 class="no-print">Gestion des Clients</h1>
+    <nav class="no-print">
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Clients</a>
+          <div class="dropdown-content">
+            <a href="#" id="addClientButton">Ajouter client</a>
+            <a href="#" id="editClientButton">Modifier</a>
+            <a href="#" id="deleteClientButton">Supprimer</a>
+            <a href="#" id="printClientButton">Imprimer</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="formSection" class="hidden">
+      <h2>Ajouter un Client</h2>
+      <form id="clientForm">
+        <label for="clientName">Nom du client :</label>
+        <input type="text" id="clientName" name="clientName" required>
+        
+        <label for="clientAddress">Adresse :</label>
+        <input type="text" id="clientAddress" name="clientAddress" required>
+        
+        <label for="clientPhone">Numéro de téléphone :</label>
+        <input type="tel" id="clientPhone" name="clientPhone" required>
+        
+        <label for="clientEmail">Adresse e-mail :</label>
+        <input type="email" id="clientEmail" name="clientEmail" required>
+        
+        <label for="clientTaxID">Numéro d'identification fiscale :</label>
+        <input type="text" id="clientTaxID" name="clientTaxID" required>
+        
+        <label for="clientICE">ICE :</label>
+        <input type="text" id="clientICE" name="clientICE" required>
+        
+        <label for="paymentMethod">Mode de paiement préféré :</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+          <option value="cash">Espèces</option>
+          <option value="card">Carte</option>
+          <option value="bankTransfer">Virement bancaire</option>
+        </select>
+        
+        <label for="additionalNotes">Notes supplémentaires :</label>
+        <textarea id="additionalNotes" name="additionalNotes"></textarea>
+        
+        <button type="submit">Ajouter le client</button>
+      </form>
+    </section>
+    
+    <section id="editSection" class="hidden">
+      <h2>Modifier un Client</h2>
+      <form id="editClientForm">
+        <label for="editClientSelect">Sélectionnez le client :</label>
+        <select id="editClientSelect" required></select>
+        
+        <label for="editClientName">Nom du client :</label>
+        <input type="text" id="editClientName" name="clientName" required>
+        
+        <label for="editClientAddress">Adresse :</label>
+        <input type="text" id="editClientAddress" name="clientAddress" required>
+        
+        <label for="editClientPhone">Numéro de téléphone :</label>
+        <input type="tel" id="editClientPhone" name="clientPhone" required>
+        
+        <label for="editClientEmail">Adresse e-mail :</label>
+        <input type="email" id="editClientEmail" name="clientEmail" required>
+        
+        <label for="editClientTaxID">Numéro d'identification fiscale :</label>
+        <input type="text" id="editClientTaxID" name="clientTaxID" required>
+        
+        <label for="editClientICE">ICE :</label>
+        <input type="text" id="editClientICE" name="clientICE" required>
+        
+        <label for="editPaymentMethod">Mode de paiement préféré :</label>
+        <select id="editPaymentMethod" name="paymentMethod" required>
+          <option value="cash">Espèces</option>
+          <option value="card">Carte</option>
+          <option value="bankTransfer">Virement bancaire</option>
+        </select>
+        
+        <label for="editAdditionalNotes">Notes supplémentaires :</label>
+        <textarea id="editAdditionalNotes" name="additionalNotes"></textarea>
+        
+        <button type="submit">Mettre à jour le client</button>
+      </form>
+    </section>
+
+    <section id="deleteSection" class="hidden">
+      <h2>Supprimer un Client</h2>
+      <form id="deleteClientForm">
+        <label for="deleteClientSelect">Sélectionnez le client :</label>
+        <select id="deleteClientSelect" required></select>
+        
+        <button type="submit">Supprimer le client</button>
+      </form>
+    </section>
+
+    <h2>Listes des Clients</h2>
+    <div class="controls no-print">
+      <input type="text" id="searchInput" placeholder="Rechercher un client...">
+      <button id="printButton">Imprimer</button>
+    </div>
+    <div id="clientList">
+      <!-- Les informations des clients seront générées ici dynamiquement -->
+    </div>
+  </main>
+  <script src="../js/clients.js"></script>
+</body>
+</html>

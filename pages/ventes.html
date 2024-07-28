@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des Ventes</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/ventes.css">
+</head>
+<body>
+  <header>
+    <h1>Gestion des Ventes</h1>
+    <nav>
+      <ul>
+        <li><a href='/'>Accueil</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Ventes</a>
+          <div class="dropdown-content">
+            <a href="#" id="showFormButton">Ajouter</a>
+            <a href="#" id="searchMenuButton">Recherche</a>
+            <a href="#" id="filterMenuButton">Filtrer</a>
+            <a href="#" id="printMenuButton">Imprimer</a>
+            <a href="#" id="editMenuButton">Modifier</a>
+            <a href="#" id="deleteMenuButton">Supprimer</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div id="formSection" class="hidden">
+      <form id="venteForm">
+        <label for="clientType">Type de client:</label>
+        <select id="clientType" name="clientType" required>
+          <option value="" disabled selected>Choisir type de client</option>
+          <option value="new">Nouveau Client</option>
+          <option value="existing">Ancien Client</option>
+        </select>
+
+        <div id="newClientForm" class="hidden">
+          <label for="newClientName">Nom du nouveau client:</label>
+          <input type="text" id="newClientName" name="newClientName">
+          <!-- Ajouter les autres champs pour le nouveau client si nécessaire -->
+        </div>
+
+        <div id="existingClientForm" class="hidden">
+          <label for="existingClient">Sélectionner un client:</label>
+          <select id="existingClient" name="existingClient"></select>
+        </div>
+
+        <label for="factureType">Type de facture:</label>
+        <select id="factureType" name="factureType" required>
+          <option value="" disabled selected>Choisir type de facture</option>
+          <option value="new">Nouvelle Facture</option>
+          <option value="existing">Ancienne Facture</option>
+        </select>
+
+        <div id="newFactureForm" class="hidden">
+          <label for="newFactureNumber">Numéro de la nouvelle facture:</label>
+          <input type="text" id="newFactureNumber" name="newFactureNumber">
+        </div>
+
+        <div id="existingFactureForm" class="hidden">
+          <label for="existingFacture">Sélectionner une ancienne facture:</label>
+          <select id="existingFacture" name="existingFacture"></select>
+        </div>
+
+        <label for="item">Nom de l'article:</label>
+        <input type="text" id="item" name="item" required>
+        <label for="quantity">Quantité:</label>
+        <input type="number" id="quantity" name="quantity" required>
+        <label for="price">Prix:</label>
+        <input type="number" id="price" name="price" required>
+        <button type="submit" id="submitButton">Ajouter</button>
+      </form>
+    </div>
+    <div id="searchSection" class="hidden">
+      <label for="search">Rechercher:</label>
+      <input type="text" id="search" placeholder="Rechercher...">
+    </div>
+    <div id="filterSection" class="hidden">
+      <button id="filterButton">Filtrer</button>
+      <label for="startDate">Date de début:</label>
+      <input type="date" id="startDate">
+      <label for="endDate">Date de fin:</label>
+      <input type="date" id="endDate">
+    </div>
+    <div id="editSection" class="hidden">
+      <label for="editSelect">Sélectionner une vente à modifier:</label>
+      <select id="editSelect"></select>
+    </div>
+    <div id="deleteSection" class="hidden">
+      <label for="deleteSelect">Sélectionner une vente à supprimer:</label>
+      <select id="deleteSelect"></select>
+    </div>
+    <h3 class="no-print">Liste des Ventes</h3>
+    <div id="searchResult"></div>
+    <table id="venteTable" class="styled-table">
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>N° Facture</th>
+          <th>Article</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+          <th>Total</th>
+          <th class="actionsColumn no-print" id="no-print1">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </main>
+  <script src="../js/ventes.js"></script>
+</body>
+</html>
